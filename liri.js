@@ -8,7 +8,7 @@ moment().format();
 
 
 // used to call the api keys
-var spotify = new Spotify(keys.spotify);
+// var spotify = new Spotify(keys.spotify);
 
 
 axios.get("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy").then(
