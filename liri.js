@@ -10,7 +10,7 @@ const inquirer = require('inquirer');
 // what do you want to do?
 const what = process.argv[2];
 // what do you want to search for
-const search = process.argv[3];
+const search = process.argv.slice(3).join(" ");
 
 // get the user imputs
 function runApp(what, search){
@@ -32,7 +32,7 @@ function bandsInTown(search){
   var queryUrl = "https://rest.bandsintown.com/artists" + search + "/events?app_id=codingbootcamp";
   
   axios.get(queryUrl)
-  .then(function(response, err){
+  .then(function(err, response){
     console.log(response);
     console.log('Venue: ' + response.data[0].venue.name);
     console.log('Location: ' + response.data[0].venue.city);
@@ -49,11 +49,12 @@ function spotifySearch(search){
     search = 'The Sign Ace of Base'
   }
 
-  spotify.search({type: 'track', query: search}, function (data, err){
+  spotify.search({type: 'track', query: search}, function (err, data){
     console.log('Artist Name: ' + data.tracks.items[0].album.artists[0].name);
     console.log('Song Title: ' + data.tracks.items[0].name);
     console.log('Song Prieview: ' + data.tracks.items[0].href);
     console.log('Album: ' + data.tracks.items[0].album.name);
+    // console.log(data);
     if (err){
       console.log(err)
         return;
@@ -63,6 +64,8 @@ function spotifySearch(search){
 
 // intialize runApp func
 runApp(what, search);
+
+// the start of the abandonded code
 // let input = '';
 // let song = '';
 // let movie = '';
