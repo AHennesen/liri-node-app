@@ -25,18 +25,51 @@ function selectChoice() {
       getRandom();
       return;
     } else {
-      liri = answer.start;
+      start = answer.start;
       inquirer.prompt([
-       { type: input,
+       {
          name: userimput,
          message: 'What would you like for me to look up?'
        }
       ]).then(function (response){
         input = response.userimput;
+        choiceSelect(start);
       })
     }
   });
 }
+
+function userImput(){
+  if (input){
+    song = input;
+    movie = input;
+    band = input;
+  } else {
+    song = 'The Sign';
+    movie = 'Mr. Nodbody';
+    band = 'Boy';
+  }
+};
+
+function choiceSelect(){
+  userImput();
+  switch(start) {
+    case 'concert-this':
+      bandsInTown();
+      break;
+    case 'spotify-this-song':
+      spotify();
+      break;
+    case 'movie-this':
+      omdb();
+      break;
+  }
+};
+
+
+
+
+
 
 function spotifyAPI() {
   timestap();
