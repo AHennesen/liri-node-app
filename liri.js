@@ -38,6 +38,18 @@ function selectChoice() {
   });
 }
 
+function spotifyAPI() {
+  timestap();
+  spotify.search({
+    type: 'track',
+    query: song,
+    limit: 1
+  }).then(function(response, err){
+    if (err) console.log(err);
+    var songArray = response.track.items[0];
+  })
+}
+
 // the rest of the code here is going to be going through the choices.
 // current my spotify keys don't appear to be working and I am to tired to think straight. Will continue work tommrow.
 selectChoice();
