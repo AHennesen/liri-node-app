@@ -47,7 +47,7 @@ function spotifyAPI() {
   }).then(function(response, err){
     if (err) console.log(err);
     var songArray = response.track.items[0];
-  })
+  })  
 }
 
 // the rest of the code here is going to be going through the choices.
