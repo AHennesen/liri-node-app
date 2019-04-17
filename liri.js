@@ -88,15 +88,18 @@ function omdb(search){
   });
 };
 
-// crates the do this fnc
+// crates the do this fnc`
 function doThis(){
-  fs.readFile('random.txt', 'utf 8', function (err, data){
+  fs.readFile('random.txt', 'utf8', function (err, data){
     if (err) {
       return console.log(err);
     } else {
       console.log(data)
+
+      var text = data.split(",");
+      runApp(text[0], text[1]);
     }
-  })
+  });
 }
 
 
