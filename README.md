@@ -8,10 +8,10 @@ This app is designed to take inputs from the user useing specific keys words.  T
 ![concert-this](/assets/pictures/concert-this.png)
 
 **do-what-it-says**
-![do-this](/assets/pictures/do-what-it-says)
+![do-this](/assets/pictures/do-what-it-says.png)
 
 **movie-this**
-![movie-this](/assets/pictures/movie-this)
+![movie-this](/assets/pictures/movie-this.png)
 
 **spotify-this-song**
-![spotify-this-song](/assets/pictures/spotify-this-song)
+![spotify-this-song](/assets/pictures/spotify-this-song.png)
