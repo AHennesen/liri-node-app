@@ -20,8 +20,8 @@ function runApp(what, search){
     spotifySearch(search);
   } else if (what === 'movie-this'){
     omdb(search)
-  } else if (what === 'do-what-is-says'){
-    itSays();
+  } else if (what === 'do-what-it-says'){
+    doThis();
   } else {
     console.log('Please enter a valid cmd: concert-this, spotify-this-song, movie-this, do-what-it-says');
   }
@@ -55,7 +55,6 @@ function spotifySearch(search){
     console.log('Song Title: ' + data.tracks.items[0].name);
     console.log('Song Prieview: ' + data.tracks.items[0].href);
     console.log('Album: ' + data.tracks.items[0].album.name);
-    // console.log(data);
     if (err){
       console.log(err)
         return;
@@ -72,7 +71,7 @@ function omdb(search){
   // var queryUrl = "http://www.omdbapi.com?/t=' + search + '&y=&plot=short&apikey=trilogy";
 
   axios.get("http://www.omdbapi.com/?t=" + search + "&y=&plot=short&apikey=trilogy")
-  .then(function(response){
+  .then(function(response, err){
     // console.log(response);
     console.log('Title: ' + response.data.Title);
     console.log('Released: ' + response.data.Year);
@@ -82,9 +81,23 @@ function omdb(search){
     console.log('Language: ' + response.data.Language);
     console.log('Plot: ' + response.data.Plot);
     console.log('Actors: ' + response.data.Actors);
+    if (err){
+      console.log(err)
+        return;
+    };
+  });
+};
+
+// crates the do this fnc
+function doThis(){
+  fs.readFile('random.txt', 'utf 8', function (err, data){
+    if (err) {
+      return console.log(err);
+    } else {
+      console.log(data)
+    }
   })
 }
-
 
 
 // intialize runApp func
