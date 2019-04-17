@@ -29,21 +29,21 @@ function runApp(what, search){
 
 // create bandsInTown func
 function bandsInTown(search){
-  var queryUrl = "https://rest.bandsintown.com/artists" + search + "/events?app_id=codingbootcamp";
+  // var queryUrl = "https://rest.bandsintown.com/artists" + search + "/events?app_id=codingbootcamp";
   
-  axios.get(queryUrl)
-  .then(function(err, response){
-    console.log(response);
+  axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp")
+  .then(function(response, err){
+    // console.log(response);
     console.log('Venue: ' + response.data[0].venue.name);
     console.log('Location: ' + response.data[0].venue.city);
-    console.log('Date: ' + response.data[0].datetime).format('MM-DD-YYYY');
+    console.log('Date: ' + response.data[0].datetime);
     if (err){
         console.log(err);
       };
     });
   };
 
-
+// create spotifySearch function  
 function spotifySearch(search){
   if (!search){
     search = 'The Sign Ace of Base'
@@ -61,6 +61,22 @@ function spotifySearch(search){
     }
   });
 };
+// create omdb function
+function omdb(search){
+
+  if(!search){
+    search = 'Mr. Nobody';
+  }
+  var queryUrl = 'http://www.omdbapi.com?/t=' + search + '&y=&plot=short&apikey=trilogy';
+
+  axios.get(queryUrl)
+  .then(function(response){
+    // console.log(response);
+    console.log('Title: ' + response.data.Title);
+  })
+}
+
+
 
 // intialize runApp func
 runApp(what, search);
