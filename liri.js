@@ -29,6 +29,7 @@ function runApp(what, search){
 
 // create bandsInTown func
 function bandsInTown(search){
+  // this refuses to work for litterly no reason
   // var queryUrl = "https://rest.bandsintown.com/artists" + search + "/events?app_id=codingbootcamp";
   
   axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp")
@@ -67,12 +68,20 @@ function omdb(search){
   if(!search){
     search = 'Mr. Nobody';
   }
-  var queryUrl = 'http://www.omdbapi.com?/t=' + search + '&y=&plot=short&apikey=trilogy';
+  // this also refueses to work for litterly no reason
+  // var queryUrl = "http://www.omdbapi.com?/t=' + search + '&y=&plot=short&apikey=trilogy";
 
-  axios.get(queryUrl)
+  axios.get("http://www.omdbapi.com/?t=" + search + "&y=&plot=short&apikey=trilogy")
   .then(function(response){
     // console.log(response);
     console.log('Title: ' + response.data.Title);
+    console.log('Released: ' + response.data.Year);
+    console.log('IMDB Rating: ' + response.data.imdbRating);
+    console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].value);
+    console.log('Country: ' + response.data.Country);
+    console.log('Language: ' + response.data.Language);
+    console.log('Plot: ' + response.data.Plot);
+    console.log('Actors: ' + response.data.Actors);
   })
 }
 
